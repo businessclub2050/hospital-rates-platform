@@ -6,6 +6,8 @@
 **🌐 Live API:** [hospital-rates-api.businessclub2050.workers.dev](https://hospital-rates-api.businessclub2050.workers.dev)
 **📊 Try it:** [`/v1/hospitals/adventist-tillamook/payer-intel`](https://hospital-rates-api.businessclub2050.workers.dev/v1/hospitals/adventist-tillamook/payer-intel)
 
+![Executive dashboard showing financial intelligence, quality at a glance, and per-insurer payer intelligence for Adventist Health Tillamook](screenshots/executive-dashboard.png)
+
 ---
 
 ## The Problem
