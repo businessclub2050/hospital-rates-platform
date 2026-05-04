@@ -45,7 +45,7 @@ This is a **public reference implementation** showing methodology and architectu
 - **Streaming MRF parser** (DuckDB + Python) capable of processing 400–670 MB gzip/zip JSON files without loading into memory
 - Handles non-standard ZIP variants including Deflate64
 - **Ingest queue** via Cloudflare Workers + R2 object storage; per-hospital run tracking in D1 with retry/resume on partial failures
-- **HCRIS FY2023 cost report integration** for 711 hospitals: cost-charge ratios, markup multiples, charity care as % of total costs
+- **HCRIS FY2024 cost report integration** for 711 hospitals: cost-charge ratios, markup multiples, charity care as % of total costs
 
 ### Rate Analysis
 - **Rate index = `negotiated_avg ÷ gross_charge`** (discount rate) — eliminates code-mix bias when comparing hospitals with different service portfolios.
@@ -55,7 +55,7 @@ This is a **public reference implementation** showing methodology and architectu
 ### Scale (current snapshot)
 - 2.3M+ negotiated rate rows across 22 hospitals in OR, KS, MO
 - 21-hospital Oregon peer cohort
-- HCRIS cost data for 711 of 723 target KS/MO hospitals (FY2023)
+- HCRIS cost data for 711 of 723 target KS/MO hospitals (FY2024)
 
 ### Stack
 Python · DuckDB · TypeScript · Cloudflare Workers · D1 (serverless SQLite) · R2 · Queues · SvelteKit · Tailwind CSS · CMS MRF schema · HCRIS
