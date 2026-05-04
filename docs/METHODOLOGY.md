@@ -19,7 +19,7 @@ avg(negotiated_rate at Hospital B for Aetna)
 
 Hospital B looks "8x more expensive" but that's almost entirely because their service mix is different. The actual contracts with Aetna might give Hospital A a *better* deal on the procedures they both perform.
 
-This is called **code-mix bias** and it's the same problem actuaries face when comparing provider panels.
+This is called **code-mix bias** and it's a well-known problem in provider-panel comparison.
 
 ## The Fix: Discount Rate Ratio
 

@@ -9,7 +9,7 @@
  *   - Rate index using discount-rate ratio (negotiated / gross) — code-mix neutral
  *   - Compliance fallback for hospitals that publish only an all-payers rollup
  *
- * See ../docs/METHODOLOGY.md for the actuarial reasoning behind the rate index.
+ * See ../docs/METHODOLOGY.md for the reasoning behind the rate index.
  *
  * This file shows the handler logic in isolation. The full implementation lives
  * in src/api/handlers.ts in the private API repo, alongside ~30 other endpoints

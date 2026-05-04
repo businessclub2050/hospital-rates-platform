@@ -1,7 +1,7 @@
 # Hospital Price Transparency Intelligence Platform
 
-> Actuarial-grade analysis of hospital negotiated rates from CMS machine-readable files.
-> Streaming ingestion, peer benchmarking, and compliance detection — built independently as part of [JanusNW Research LLC](https://github.com/businessclub2050).
+> Peer-benchmarked analysis of hospital negotiated rates from CMS machine-readable files.
+> Streaming ingestion, rate-index normalization, and compliance detection — built independently as part of [JanusNW Research LLC](https://github.com/businessclub2050).
 
 **🌐 Live API:** [hospital-rates-api.businessclub2050.workers.dev](https://hospital-rates-api.businessclub2050.workers.dev)
 **📊 Try it:** [`/v1/hospitals/adventist-tillamook/payer-intel`](https://hospital-rates-api.businessclub2050.workers.dev/v1/hospitals/adventist-tillamook/payer-intel)
@@ -17,7 +17,7 @@ Since 2021, [45 CFR §180.50](https://www.ecfr.gov/current/title-45/subtitle-A/s
 - Many hospitals deliberately publish a single all-payers blended rate instead of per-insurer breakdowns — likely non-compliant
 - The data is technically public but practically inaccessible without serious engineering
 
-Commercial firms like Turquoise Health, Clarify Health, and Dais are building businesses on this dataset. This repo is the public-facing case study of an independent end-to-end implementation: ingestion → normalization → actuarial analysis → executive-facing API.
+Commercial firms like Turquoise Health, Clarify Health, and Dais are building businesses on this dataset. This repo is the public-facing case study of an independent end-to-end implementation: ingestion → normalization → peer benchmarking → executive-facing API.
 
 ---
 
@@ -28,7 +28,7 @@ This is a **public reference implementation** showing methodology and architectu
 | Path | Description |
 |------|-------------|
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | System design, data flow, infrastructure |
-| [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) | The actuarial rate-index methodology — why discount-rate ratios beat raw averages |
+| [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) | The rate-index methodology — why discount-rate ratios beat raw averages |
 | [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md) | How the platform detects likely 45 CFR §180.50 violations |
 | [`schema/d1-schema.sql`](schema/d1-schema.sql) | Cloudflare D1 schema (sanitized) |
 | [`ingest/parse_large_mrf.py`](ingest/parse_large_mrf.py) | Streaming MRF parser (DuckDB + Python) for files too large for serverless memory limits |
@@ -45,8 +45,8 @@ This is a **public reference implementation** showing methodology and architectu
 - **Ingest queue** via Cloudflare Workers + R2 object storage; per-hospital run tracking in D1 with retry/resume on partial failures
 - **HCRIS FY2023 cost report integration** for 711 hospitals: cost-charge ratios, markup multiples, charity care as % of total costs
 
-### Actuarial Analysis
-- **Rate index = `negotiated_avg ÷ gross_charge`** (discount rate) — eliminates code-mix bias when comparing hospitals with different service portfolios. Same normalization technique actuaries use for provider-panel comparisons.
+### Rate Analysis
+- **Rate index = `negotiated_avg ÷ gross_charge`** (discount rate) — eliminates code-mix bias when comparing hospitals with different service portfolios.
 - **Peer comparison** across same-state hospitals — `+18% vs peers` means this insurer pays 18% more per service at this hospital than at comparable facilities, after controlling for service mix
 - **Automatic compliance detection** — flags hospitals publishing single-payer rollups as likely non-compliant with the per-payer disclosure requirement; meaningful signal for contract negotiators and regulators
 
